@@ -1,5 +1,6 @@
 
 import flatpickr from 'flatpickr';
+import Notiflix from 'notiflix';
 import 'flatpickr/dist/flatpickr.min.css';
 const currentTime = Date.now();
 const startBtn = document.querySelector('button');
@@ -27,8 +28,8 @@ const options = {
         const selectedDate = (selectedDates[0]).getTime();
         if (Date.now() > selectedDate) {
             startBtn.disabled = true;
+            Notiflix.Notify.failure('Please choose a date in the future');
             console.log('Wrong date!');
-            window.alert('Please choose a date in the future');
             return;
         }
         else {
